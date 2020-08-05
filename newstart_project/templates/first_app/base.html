@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- <h1>this is base.html</h1> -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="{% url 'index'%}">BRAND</a></li>
+          <li><a class="navbar-link" href="{% url 'admin:index'%}">admin</a></li>
+          <li><a class="navbar-link" href="{% url 'first_app:other' %}">other</a></li>
+          <li><a class="navbar-link" href="{% url 'first_app:register' %}">register</a></li>
+
+          {% if user.is_authenticated %}
+            <li><a class="navbar-link" href="{% url 'logout'}">logout</a></li>
+          {% else%}
+            <li><a class="navbar-link" href="{% url 'first_app:user_login' %}">login</a></li>
+            {% endif %}
+
+        </ul>
+
+      </div>
+
+    </nav>
+    <div class="container">
+      {% block body_block %}
+      <!-- anythind outside this will be inheireted -->
+      {% endblock %}
+
+    </div>
+
+
+  </body>
+</html>
