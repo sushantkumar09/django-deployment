@@ -91,3 +91,6 @@ def user_login(request):
             return HttpResponse("invalid login details")
     else:
         return render(request,'first_app/login.html')
+    
+    
+    //Abhijeet's contribution for Hacktober!!
